@@ -1,19 +1,14 @@
 "use strict";
 
-
-const url = '../JSON/quiz.json'
+const url = "../JSON/quiz.json";
 
 function getAndParseJSON() {
-    
-    fetch(url)
+  fetch(url)
+    .then((response) => response.json())
 
-        .then((response) => response.json())
-
-        .then((data) => {
-            console.log(data);
-        })
-
+    .then((data) => {
+      console.log(data);
+    });
 }
-
 
 getAndParseJSON();
