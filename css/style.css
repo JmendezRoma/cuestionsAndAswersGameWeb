@@ -3,3 +3,27 @@
     width: 0;
     box-sizing: border-box;
 }
+
+#tituloGame {
+    background-color: rgb(236, 196, 255);
+    width: 100rem;
+    padding: 10px;
+    font-size: 15px;
+    padding-left: 10rem;
+}
+
+
+.textAltered{
+    display: flex;
+    justify-content:center ;
+    flex-direction: column;
+    color: rgb(18, 117, 48);
+    width: 50rem;
+    font-size: 1.5rem;
+}
+button {
+
+    height: 5rem;
+    width: 30rem;
+}
+
