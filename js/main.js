@@ -50,44 +50,51 @@ const firstAnswerButton = document.getElementById("answerButton1");
 const secondAnswerButton = document.getElementById("answerButton2");
 const thirdAnswerButton = document.getElementById("answerButton3");
 const fourthAnswerButton = document.getElementById("answerButton4");
+
+let answerArray ;
+let correctAnswer;
+
 async function insertAnswers() {
   await insertRandomQuestion();
   if (cuestionsRamdonArray != null) {
     cuestionsRamdonArray.forEach((element) => {
-      const answerArray = element.answers;
-      const correctAnswer = element.correct;
-
+      
+      answerArray = element.answers
+      correctAnswer= element.correct;
+      
       firstAnswerButton.innerHTML = `
-
-              ${answerArray[0]}
+      
+      ${answerArray[0]}
       `;
       secondAnswerButton.innerHTML = `
-
-              ${answerArray[1]}
+      
+      ${answerArray[1]}
       `;
       thirdAnswerButton.innerHTML = `
-
-              ${answerArray[2]}
+      
+      ${answerArray[2]}
       `;
       fourthAnswerButton.innerHTML = `
-
-              ${answerArray[3]}
+      
+      ${answerArray[3]}
       `;
-      firstAnswerButton.addEventListener("click", () =>
-        checkAnswers(answerArray[0], correctAnswer)
-      );
-      secondAnswerButton.addEventListener("click", () =>
-        checkAnswers(answerArray[1], correctAnswer)
-      );
-      thirdAnswerButton.addEventListener("click", () =>
-        checkAnswers(answerArray[2], correctAnswer)
-      );
-      fourthAnswerButton.addEventListener("click", () =>
-        checkAnswers(answerArray[3], correctAnswer)
-      );
     });
   }
 }
+
+firstAnswerButton.addEventListener("click", () =>
+  checkAnswers(answerArray[0], correctAnswer)
+);
+secondAnswerButton.addEventListener("click", () =>
+  checkAnswers(answerArray[1], correctAnswer)
+);
+thirdAnswerButton.addEventListener("click", () =>
+  checkAnswers(answerArray[2], correctAnswer)
+);
+fourthAnswerButton.addEventListener("click", () =>
+  checkAnswers(answerArray[3], correctAnswer)
+);
+
 
 let numOfCorrectAnwers = 0;
 
