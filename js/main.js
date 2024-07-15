@@ -14,6 +14,7 @@ async function getAndParseJSON() {
 }
 
 let cuestionsRamdonArray = [];
+
 console.log(`estoo vale el array ,exclasdo ${cuestionsRamdonArray}`);
 async function filterQuestions() {
   const finalData = await getAndParseJSON();
@@ -22,7 +23,7 @@ async function filterQuestions() {
     finalData.forEach((e) => {
       finalData.sort(() => Math.random() - 0.5);
       cuestionsRamdonArray.push(e);
-      console.log(e);
+      console.log(e); //array entero de manera random
     });
   }
 }
@@ -45,27 +46,62 @@ async function insertRandomQuestion() {
   }
 }
 
+const firstAnswerButton = document.getElementById("answerButton1");
+const secondAnswerButton = document.getElementById("answerButton2");
+const thirdAnswerButton = document.getElementById("answerButton3");
+const fourthAnswerButton = document.getElementById("answerButton4");
 async function insertAnswers() {
   await insertRandomQuestion();
   if (cuestionsRamdonArray != null) {
     cuestionsRamdonArray.forEach((element) => {
-      let answerString = element.answers;
-     console.log(answerString);
-      const answersSelector = document.getElementById("answersList");
-      answersSelector.innerHTML = `
-    <button class="textAltered">
-    ${element.answers[0]} </button>
-    <button class="textAltered">
-    ${element.answers[1]} </button>
-    <button class="textAltered">
-    ${element.answers[2]} </button>
-    <button class="textAltered">
-    ${element.answers[3]} </button>
-`;
+      const answerArray = element.answers;
+      const correctAnswer = element.correct;
+
+      firstAnswerButton.innerHTML = `
+
+              ${answerArray[0]}
+      `;
+      secondAnswerButton.innerHTML = `
+
+              ${answerArray[1]}
+      `;
+      thirdAnswerButton.innerHTML = `
+
+              ${answerArray[2]}
+      `;
+      fourthAnswerButton.innerHTML = `
+
+              ${answerArray[3]}
+      `;
+      firstAnswerButton.addEventListener("click", () =>
+        checkAnswers(answerArray[0], correctAnswer)
+      );
+      secondAnswerButton.addEventListener("click", () =>
+        checkAnswers(answerArray[1], correctAnswer)
+      );
+      thirdAnswerButton.addEventListener("click", () =>
+        checkAnswers(answerArray[2], correctAnswer)
+      );
+      fourthAnswerButton.addEventListener("click", () =>
+        checkAnswers(answerArray[3], correctAnswer)
+      );
     });
   }
-  console.log("esto vale insertAnswer" + insertAnswers);
 }
 
-insertRandomQuestion();
+let numOfCorrectAnwers = 0;
+
+function checkAnswers(selectedAnswer, correctAnswer) {
+  if (selectedAnswer === correctAnswer) {
+    console.log("correct");
+    numOfCorrectAnwers = numOfCorrectAnwers++;
+  } else {
+    console.log("incorrect");
+    numOfCorrectAnwers = numOfCorrectAnwers--;
+  }
+}
+
+console.log(numOfCorrectAnwers);
+
 insertAnswers();
+//añadir eventos a los botones de las respuestas
