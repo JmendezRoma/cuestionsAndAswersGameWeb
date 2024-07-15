@@ -1,22 +1,20 @@
 "use strict";
-
+import {  } from "./main.js";
 let count = 0;
 
 const nextButton = document.getElementById("cuestionButton");
-let counterButton = nextButton.addEventListener("click", () => {
-  count++;
-  console.log("contador", count);
-  if (count >= 5) {
+nextButton.addEventListener("click", () => {
+  ++count;
+
+  if (count >= 10) {
     location.reload();
   }
-  const selectorScore = document.getElementById("score");
+  const selectorScore = document.getElementById("numeroPregunta");
 
   selectorScore.innerHTML = `
-      
-  
-      ${count}
-  
-  `;
+    <p class="textAltered">Pregunta numero: ${count} </p>
+    `;
 });
 
-console.log(count);
+
+
