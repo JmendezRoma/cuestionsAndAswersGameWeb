@@ -15,32 +15,35 @@ async function getAndParseJSON() {
 
 let cuestionsRamdonArray = [];
 
-console.log(`estoo vale el array ,exclasdo ${cuestionsRamdonArray}`);
 async function filterQuestions() {
   const finalData = await getAndParseJSON();
   if (finalData) {
-    console.log("final data vale " + finalData);
-    finalData.forEach((e) => {
-      finalData.sort(() => Math.random() - 0.5);
-      cuestionsRamdonArray.push(e);
-      console.log(e); //array entero de manera random
-    });
+    finalData.sort(() => Math.random() - 0.5);
+    cuestionsRamdonArray = finalData;
   }
 }
 
+const cuestionHtmlSelector = document.getElementById("sectionCuestions");
+const selectorNumeroPregunta = document.getElementById("numeroPregunta");
+
+let numOfCuestion = 0;
+
 async function insertRandomQuestion() {
   await filterQuestions();
+
   if (cuestionsRamdonArray != null) {
     cuestionsRamdonArray.forEach((element) => {
-      console.log("esto vale elemente " + element);
       let arrayString = JSON.stringify(element.question);
-      console.log("esto vale arrayString");
-      const cuestionHtmlSelector = document.getElementById("sectionCuestions");
       cuestionHtmlSelector.innerHTML = `
-        
-        <p class="textAltered">${arrayString}</p>
-        `;
+      
+      <p class="textAltered">${arrayString}</p>
+      `;
     });
+
+    numOfCuestion++;
+    selectorNumeroPregunta.innerHTML = `
+    ${numOfCuestion}
+    `;
   } else {
     console.log("esto no funciona");
   }
@@ -51,17 +54,16 @@ const secondAnswerButton = document.getElementById("answerButton2");
 const thirdAnswerButton = document.getElementById("answerButton3");
 const fourthAnswerButton = document.getElementById("answerButton4");
 
-let answerArray ;
+let answerArray;
 let correctAnswer;
 
 async function insertAnswers() {
   await insertRandomQuestion();
   if (cuestionsRamdonArray != null) {
     cuestionsRamdonArray.forEach((element) => {
-      
-      answerArray = element.answers
-      correctAnswer= element.correct;
-      
+      answerArray = element.answers;
+      correctAnswer = element.correct;
+
       firstAnswerButton.innerHTML = `
       
       ${answerArray[0]}
@@ -95,20 +97,31 @@ fourthAnswerButton.addEventListener("click", () =>
   checkAnswers(answerArray[3], correctAnswer)
 );
 
-
 let numOfCorrectAnwers = 0;
+
+const selectorNumOfCorrectAnwers = document.getElementById("score");
 
 function checkAnswers(selectedAnswer, correctAnswer) {
   if (selectedAnswer === correctAnswer) {
     console.log("correct");
-    numOfCorrectAnwers = numOfCorrectAnwers++;
+    numOfCorrectAnwers += 10;
+    console.log(numOfCorrectAnwers);
+    selectorNumOfCorrectAnwers.innerHTML = `
+    ${numOfCorrectAnwers}
+    `;
+    insertRandomQuestion();
+    insertAnswers();
+  } else if (numOfCorrectAnwers === 50) {
+    location.reload();
   } else {
     console.log("incorrect");
-    numOfCorrectAnwers = numOfCorrectAnwers--;
+
+    console.log(numOfCorrectAnwers);
+
+    selectorNumOfCorrectAnwers.innerHTML = `
+    has fallado
+    `;
   }
 }
 
-console.log(numOfCorrectAnwers);
-
 insertAnswers();
-//añadir eventos a los botones de las respuestas
