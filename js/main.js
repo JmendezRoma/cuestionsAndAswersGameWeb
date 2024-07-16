@@ -1,8 +1,11 @@
 "use strict";
+
+//se guarda en una variable el JSON
 const url = "../JSON/quiz.json";
 
 const finalData = [];
 
+//se captura y parsea el JSON a objeto literal de js
 async function getAndParseJSON() {
   try {
     const response = await fetch(url);
@@ -15,6 +18,7 @@ async function getAndParseJSON() {
 
 let cuestionsRamdonArray = [];
 
+//mezclar el array obtenido
 async function filterQuestions() {
   const finalData = await getAndParseJSON();
   if (finalData) {
@@ -28,6 +32,7 @@ const selectorNumeroPregunta = document.getElementById("numeroPregunta");
 
 let numOfCuestion = 0;
 
+//inserta en el DOM el la pregunta random y luego la pasa a string con stringiy
 async function insertRandomQuestion() {
   await filterQuestions();
 
@@ -45,10 +50,11 @@ async function insertRandomQuestion() {
     ${numOfCuestion}
     `;
   } else {
-    console.log("esto no funciona");
+    console.log("Error : esto no funciona, no se ha podido acceder a los datos");
   }
 }
 
+//se guardan los botones en variables
 const firstAnswerButton = document.getElementById("answerButton1");
 const secondAnswerButton = document.getElementById("answerButton2");
 const thirdAnswerButton = document.getElementById("answerButton3");
@@ -57,6 +63,7 @@ const fourthAnswerButton = document.getElementById("answerButton4");
 let answerArray;
 let correctAnswer;
 
+//inserta en el DOM las respuestas
 async function insertAnswers() {
   await insertRandomQuestion();
   if (cuestionsRamdonArray != null) {
@@ -84,6 +91,7 @@ async function insertAnswers() {
   }
 }
 
+//se llaman los botones colocandoles un evento donde se llama checkAnswers como callback
 firstAnswerButton.addEventListener("click", () =>
   checkAnswers(answerArray[0], correctAnswer)
 );
@@ -98,30 +106,68 @@ fourthAnswerButton.addEventListener("click", () =>
 );
 
 let numOfCorrectAnwers = 0;
+let numOfIncorrectAnwers = 0;
 
+//guardarmos la etiqueta score
 const selectorNumOfCorrectAnwers = document.getElementById("score");
 
-function checkAnswers(selectedAnswer, correctAnswer) {
+
+//funcion que se encarga de comparar la seleccion del usuario, comprobando si es correcta o incorrecta
+async function checkAnswers(selectedAnswer, correctAnswer) {
+  await insertAnswers();
+
   if (selectedAnswer === correctAnswer) {
-    console.log("correct");
-    numOfCorrectAnwers += 10;
-    console.log(numOfCorrectAnwers);
+    numOfCorrectAnwers += 1;
     selectorNumOfCorrectAnwers.innerHTML = `
-    ${numOfCorrectAnwers}
+    ${numOfCorrectAnwers} has acertado
     `;
     insertRandomQuestion();
     insertAnswers();
-  } else if (numOfCorrectAnwers === 50) {
-    location.reload();
   } else {
-    console.log("incorrect");
-
-    console.log(numOfCorrectAnwers);
-
+    numOfIncorrectAnwers += 1;
     selectorNumOfCorrectAnwers.innerHTML = `
-    has fallado
+    ${numOfIncorrectAnwers} has fallado
     `;
+    insertRandomQuestion();
+    insertAnswers();
+  }
+
+  if (numOfCorrectAnwers === 10) {
+
+    //se llama a la funcion
+    disableButtons();
+    selectorNumOfCorrectAnwers.innerHTML = `
+    ${numOfCorrectAnwers} has ganado
+    `;
+  }
+  if (numOfIncorrectAnwers === 3) {
+
+    //se llama a la funcion
+    disableButtons();
+
+    
+    selectorNumOfCorrectAnwers.innerHTML = `
+    <p class=s"sdasd">${numOfIncorrectAnwers} has perdido
+    </p> 
+    
+    <button type="submit" id="loadBtn">Reiniciar</button>
+    `;
+
+
+    //se crea evento de boton de reinicio del juego
+    const selectorLoad = document.getElementById("loadBtn");
+    selectorLoad.addEventListener("click", () => {
+      location.reload();
+    });
   }
 }
 
+//se crea funcion  para se llamada dentro de las condiciones
+function disableButtons() {
+  firstAnswerButton.disabled = true;
+  secondAnswerButton.disabled = true;
+  thirdAnswerButton.disabled = true;
+  fourthAnswerButton.disabled = true;
+}
+insertRandomQuestion();
 insertAnswers();

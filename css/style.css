@@ -9,7 +9,7 @@
     width: 100rem;
     padding: 10px;
     font-size: 15px;
-    padding-left: 10rem;
+    padding-left: auto;
 }
 
 
@@ -19,11 +19,17 @@
     flex-direction: column;
     color: rgb(18, 117, 48);
     width: 50rem;
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
-button {
+button{
 
     height: 5rem;
     width: 30rem;
+    background-color: rgb(214, 110, 36);
+
 }
 
+
+button:hover {
+    background-color: violet;
+}
