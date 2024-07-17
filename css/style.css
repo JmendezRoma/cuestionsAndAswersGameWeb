@@ -1,35 +1,63 @@
 * {
     padding: 0;
-    width: 0;
+    margin: 0;
     box-sizing: border-box;
 }
 
 #tituloGame {
-    background-color: rgb(236, 196, 255);
-    width: 100rem;
+    background-color: rgb(47, 109, 160);
+    width: 100%;
     padding: 10px;
-    font-size: 15px;
-    padding-left: auto;
+    font-size: 13px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 10vh;
 }
+
+body {
+    text-align: center;
+    background-color: grey;
+}
+
+#answersList {
+    
+    height: 40vh;
+    width: 100%;
+    
+}
+
+.answerButton {
+    font-size:20px ;
+}
+
+h2 {
+    font-size: 40px;
+}
+
 
 
 .textAltered{
     display: flex;
     justify-content:center ;
     flex-direction: column;
-    color: rgb(18, 117, 48);
-    width: 50rem;
+    color: rgb(255, 255, 255);
+    width: 100%;
     font-size: 2rem;
+    font-size: 25px;
+    text-align: center;
+    max-height: 18vh;
 }
+
+
 button{
 
     height: 5rem;
-    width: 30rem;
-    background-color: rgb(214, 110, 36);
+    width: 100%;
+    background-color: rgb(243, 167, 112);
 
 }
 
 
-button:hover {
-    background-color: violet;
+button:hover{
+    background-color: rgb(86, 136, 161);
 }
+
