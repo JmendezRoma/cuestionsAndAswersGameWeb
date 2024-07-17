@@ -5,12 +5,14 @@
 }
 
 #tituloGame {
-    background-color: rgb(47, 109, 160);
+    background-color: rgba(130, 121, 255, 0.664);
     width: 100%;
     padding: 10px;
     font-size: 13px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     height: 17vh;
+    color: rgb(21, 63, 155);
+    
 }
 .textAltered{
     color: rgb(255, 255, 255);
@@ -19,11 +21,17 @@
     text-align: center;
     height: 5vh;
     padding: 5px;
+    font-weight: bold;
     
 }
 
 #answersList{
     height: 38vh;
+    
+}
+#numScore {
+    font-size: 20px;
+    color: rgb(24, 66, 155);
 }
 
 section {
@@ -39,36 +47,45 @@ h1 {
     margin-top: 10px;
     font-size: 33px;
     padding: 5px;
+    font-weight: bold;
 }
 
 h2 {
     font-size: 20px;
     padding: 5px;
     margin-top: 20px;
+    font-weight: bold;
+    color: rgb(24, 66, 155);
+    
 }
 
 #descriptionGame {
 
     font-size: 15px;
+    font-weight: bold;
+    
 }
 
 
 footer{
     height: 15vh;
+    font-weight: bold;
 }
 
 
 
 
 button{
-
+    border-radius: 100px;
     height: 5rem;
     width: 100%;
-    background-color: rgb(243, 167, 112);
+    background-color: rgb(100, 99, 177);
+    font-weight: bold;
 
 }
 
 
 button:hover{
-    background-color: rgb(86, 136, 161);
+    background-color: rgba(166, 38, 240, 0.315);
+    font-weight: bold;
 }
