@@ -9,6 +9,9 @@ const finalData = [];
 async function getAndParseJSON() {
   try {
     const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Status: ${response.status}`);
+    }
     const data = await response.json();
     return data;
   } catch (error) {
@@ -44,14 +47,13 @@ async function insertRandomQuestion() {
       <p class="textAltered">${arrayString}</p>
       `;
     });
-
     numOfCuestion++;
+
     selectorNumeroPregunta.innerHTML = `
     <p class="textAltered">
     Pregunta numero: ${numOfCuestion}
     </p>
     `;
-    
   } else {
     console.log(
       "Error : esto no funciona, no se ha podido acceder a los datos"
@@ -118,71 +120,82 @@ const selectorNumOfCorrectAnwers = document.getElementById("score");
 
 //funcion que se encarga de comparar la seleccion del usuario, comprobando si es correcta o incorrecta
 async function checkAnswers(selectedAnswer, correctAnswer) {
-  await insertAnswers();
-
+  
+  disableEnableButtons(true)
   if (selectedAnswer === correctAnswer) {
     numOfCorrectAnwers += 1;
     selectorNumOfCorrectAnwers.innerHTML = `
     <p class = "textAltered">
     PUNTUACION:${numOfCorrectAnwers}
-     has acertado
-     </p>
+    has acertado
+    </p>
     `;
-    insertRandomQuestion();
-    insertAnswers();
+    
   } else {
     numOfIncorrectAnwers += 1;
     numOfCorrectAnwers -= 1;
     selectorNumOfCorrectAnwers.innerHTML = `
     <p class = "textAltered">
     PUNTUACION:${numOfCorrectAnwers}
-     has fallado
-     </p>
+    has fallado
+    </p>
     `;
-    insertRandomQuestion();
-    insertAnswers();
+    
   }
-
+  
+  
   if (numOfCorrectAnwers === 10) {
     //se llama a la funcion
-    disableButtons();
+    disableEnableButtons(true)
+    
     selectorNumOfCorrectAnwers.innerHTML = `
     <p class = "textAltered">
     PUNTUACION:${numOfCorrectAnwers}
-     has ganado
-     </p>
+    has ganado
+    </p>
     `;
+    return;
   }
   if (numOfIncorrectAnwers === 3) {
     //se llama a la funcion
-    disableButtons();
-
+    disableEnableButtons(true)
+    
+    
     selectorNumOfCorrectAnwers.innerHTML = `
     <p class = "textAltered">PUNTUACION:${numOfCorrectAnwers}
-     has perdido
+    has perdido
     </p> 
     
     <button type="submit" id="loadBtn">Reiniciar</button>
     `;
-
+    
     //se crea evento de boton de reinicio del juego
     const selectorLoad = document.getElementById("loadBtn");
     selectorLoad.addEventListener("click", () => {
       location.reload();
     });
+    return;
   }
+  setTimeout(() => {
+    disableEnableButtons(false);
+    insertRandomQuestion();
+    insertAnswers();
+  
+  }, 1000);
 }
 
 //se crea funcion  para se llamada dentro de las condiciones
-function disableButtons() {
-  firstAnswerButton.disabled = true;
-  secondAnswerButton.disabled = true;
-  thirdAnswerButton.disabled = true;
-  fourthAnswerButton.disabled = true;
+function disableEnableButtons(status) {
+  firstAnswerButton.disabled = status;
+  secondAnswerButton.disabled = status;
+  thirdAnswerButton.disabled = status;
+  fourthAnswerButton.disabled = status;
 }
+
+
 insertRandomQuestion();
 insertAnswers();
 
-//TAREAS: 1/solucionar problema de contador de preguntas(bucle for each afecta al contador.)2/problema de despliegue en git hub pages. 3/estructurar y estilizar el Css. 4/MediasQuerys movil
+//TAREAS: 1/solucionar problema de contador de preguntas(bucle for each afecta al contador.)2/problema de despliegue en git hub pages. 3/estructurar y estilizar el Css. 4/MediasQuerys movil, corregir funcion de preguntas ramdon
 
 //MEJORAS: animaciones, pagina de empezar el juego con boton start, comodines, musica, fuentes, modularizar el codigo y refactorizar, mejorar funcion randon()
