@@ -45,6 +45,7 @@ h2 {
     font-size: 25px;
     text-align: center;
     max-height: 18vh;
+    
 }
 
 
@@ -61,3 +62,7 @@ button:hover{
     background-color: rgb(86, 136, 161);
 }
 
+
+.correctAnswer {
+    background-color: green;
+}
