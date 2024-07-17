@@ -48,7 +48,7 @@ async function insertRandomQuestion() {
 
     selectorNumeroPregunta.innerHTML = `
     <p class="textAltered">
-    Pregunta numero: ${numOfCuestion}
+    Question number: ${numOfCuestion}
     </p>
     `;
   } else {
@@ -111,7 +111,7 @@ fourthAnswerButton.addEventListener("click", () =>
 
 let numOfCorrectAnwers = 0;
 let numOfIncorrectAnwers = 0;
-let numOfCuestion = 0;
+let numOfCuestion = 1;
 
 //guardarmos la etiqueta score
 const selectorNumOfCorrectAnwers = document.getElementById("score");
@@ -123,8 +123,8 @@ async function checkAnswers(selectedAnswer, correctAnswer) {
     numOfCorrectAnwers += 1;
     selectorNumOfCorrectAnwers.innerHTML = `
     <p class = "textAltered">
-    has acertado
-    PUNTUACION:${numOfCorrectAnwers}
+    Has acertado, PUNTUACION: ${numOfCorrectAnwers}
+    
     </p>
     `;
     numOfCuestion++;
@@ -132,8 +132,8 @@ async function checkAnswers(selectedAnswer, correctAnswer) {
     numOfIncorrectAnwers += 1;
     selectorNumOfCorrectAnwers.innerHTML = `
     <p class = "textAltered">
-    has fallado
-    PUNTUACION:${numOfIncorrectAnwers}
+    Has fallado, PUNTUACION: ${numOfIncorrectAnwers}
+    
     </p>
     `;
     numOfCuestion++;
@@ -145,8 +145,8 @@ async function checkAnswers(selectedAnswer, correctAnswer) {
 
     selectorNumOfCorrectAnwers.innerHTML = `
     <p class = "textAltered">
-    PUNTUACION:${numOfCorrectAnwers}
-    has ganado
+    Has ganado, PUNTUACION: ${numOfCorrectAnwers}
+    
     </p>
     `;
     numOfCuestion++;
@@ -158,8 +158,8 @@ async function checkAnswers(selectedAnswer, correctAnswer) {
     disableEnableButtons(true);
 
     selectorNumOfCorrectAnwers.innerHTML = `
-    <p class = "textAltered">PUNTUACION:${numOfIncorrectAnwers}
-    has perdido
+    <p class = "textAltered">Has perdido, PUNTUACION: ${numOfIncorrectAnwers}
+    
     </p> 
     
     <button type="submit" id="loadBtn">Reiniciar</button>
@@ -192,6 +192,3 @@ function disableEnableButtons(status) {
 insertRandomQuestion();
 insertAnswers();
 
-//TAREAS: 1/solucionar problema de contador de preguntas(bucle for each afecta al contador.)2/problema de despliegue en git hub pages. 3/estructurar y estilizar el Css. 4/MediasQuerys movil, corregir funcion de preguntas ramdon
-
-//MEJORAS: animaciones, pagina de empezar el juego con boton start, comodines, musica, fuentes, modularizar el codigo y refactorizar, mejorar funcion randon()
