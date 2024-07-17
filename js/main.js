@@ -1,7 +1,7 @@
 "use strict";
 
 //se guarda en una variable el JSON
-const url = "./../JSON/quiz.json";
+const url = "../JSON/quiz.json";
 
 const finalData = [];
 
