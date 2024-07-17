@@ -47,10 +47,15 @@ async function insertRandomQuestion() {
 
     numOfCuestion++;
     selectorNumeroPregunta.innerHTML = `
-    ${numOfCuestion}
+    <p class="textAltered">
+    Pregunta numero: ${numOfCuestion}
+    </p>
     `;
+    
   } else {
-    console.log("Error : esto no funciona, no se ha podido acceder a los datos");
+    console.log(
+      "Error : esto no funciona, no se ha podido acceder a los datos"
+    );
   }
 }
 
@@ -111,7 +116,6 @@ let numOfIncorrectAnwers = 0;
 //guardarmos la etiqueta score
 const selectorNumOfCorrectAnwers = document.getElementById("score");
 
-
 //funcion que se encarga de comparar la seleccion del usuario, comprobando si es correcta o incorrecta
 async function checkAnswers(selectedAnswer, correctAnswer) {
   await insertAnswers();
@@ -119,40 +123,47 @@ async function checkAnswers(selectedAnswer, correctAnswer) {
   if (selectedAnswer === correctAnswer) {
     numOfCorrectAnwers += 1;
     selectorNumOfCorrectAnwers.innerHTML = `
-    ${numOfCorrectAnwers} has acertado
+    <p class = "textAltered">
+    PUNTUACION:${numOfCorrectAnwers}
+     has acertado
+     </p>
     `;
     insertRandomQuestion();
     insertAnswers();
   } else {
     numOfIncorrectAnwers += 1;
+    numOfCorrectAnwers -= 1;
     selectorNumOfCorrectAnwers.innerHTML = `
-    ${numOfIncorrectAnwers} has fallado
+    <p class = "textAltered">
+    PUNTUACION:${numOfCorrectAnwers}
+     has fallado
+     </p>
     `;
     insertRandomQuestion();
     insertAnswers();
   }
 
   if (numOfCorrectAnwers === 10) {
-
     //se llama a la funcion
     disableButtons();
     selectorNumOfCorrectAnwers.innerHTML = `
-    ${numOfCorrectAnwers} has ganado
+    <p class = "textAltered">
+    PUNTUACION:${numOfCorrectAnwers}
+     has ganado
+     </p>
     `;
   }
   if (numOfIncorrectAnwers === 3) {
-
     //se llama a la funcion
     disableButtons();
 
-    
     selectorNumOfCorrectAnwers.innerHTML = `
-    <p class=s"sdasd">${numOfIncorrectAnwers} has perdido
+    <p class = "textAltered">PUNTUACION:${numOfCorrectAnwers}
+     has perdido
     </p> 
     
     <button type="submit" id="loadBtn">Reiniciar</button>
     `;
-
 
     //se crea evento de boton de reinicio del juego
     const selectorLoad = document.getElementById("loadBtn");
@@ -171,3 +182,7 @@ function disableButtons() {
 }
 insertRandomQuestion();
 insertAnswers();
+
+//TAREAS: 1/solucionar problema de contador de preguntas(bucle for each afecta al contador.)2/problema de despliegue en git hub pages. 3/estructurar y estilizar el Css. 4/MediasQuerys movil
+
+//MEJORAS: animaciones, pagina de empezar el juego con boton start, comodines, musica, fuentes, modularizar el codigo y refactorizar, mejorar funcion randon()
