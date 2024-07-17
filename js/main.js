@@ -3,8 +3,6 @@
 //se guarda en una variable el JSON
 const url = "../JSON/quiz.json";
 
-const finalData = [];
-
 //se captura y parsea el JSON a objeto literal de js
 async function getAndParseJSON() {
   try {
@@ -18,6 +16,7 @@ async function getAndParseJSON() {
     console.error("error al obetner o parsear el JSON", error);
   }
 }
+const finalData = [];
 
 let cuestionsRamdonArray = [];
 
@@ -25,15 +24,14 @@ let cuestionsRamdonArray = [];
 async function filterQuestions() {
   const finalData = await getAndParseJSON();
   if (finalData) {
-    finalData.sort(() => Math.random() - 0.5);
+    finalData.sort(() => Math.floor(Math.random() - 0.5));
     cuestionsRamdonArray = finalData;
   }
 }
 
+
 const cuestionHtmlSelector = document.getElementById("sectionCuestions");
 const selectorNumeroPregunta = document.getElementById("numeroPregunta");
-
-let numOfCuestion = 0;
 
 //inserta en el DOM el la pregunta random y luego la pasa a string con stringiy
 async function insertRandomQuestion() {
@@ -47,7 +45,6 @@ async function insertRandomQuestion() {
       <p class="textAltered">${arrayString}</p>
       `;
     });
-    numOfCuestion++;
 
     selectorNumeroPregunta.innerHTML = `
     <p class="textAltered">
@@ -114,84 +111,83 @@ fourthAnswerButton.addEventListener("click", () =>
 
 let numOfCorrectAnwers = 0;
 let numOfIncorrectAnwers = 0;
+let numOfCuestion = 0;
 
 //guardarmos la etiqueta score
 const selectorNumOfCorrectAnwers = document.getElementById("score");
 
 //funcion que se encarga de comparar la seleccion del usuario, comprobando si es correcta o incorrecta
 async function checkAnswers(selectedAnswer, correctAnswer) {
-  
-  disableEnableButtons(true)
+  disableEnableButtons(true);
   if (selectedAnswer === correctAnswer) {
     numOfCorrectAnwers += 1;
     selectorNumOfCorrectAnwers.innerHTML = `
     <p class = "textAltered">
-    PUNTUACION:${numOfCorrectAnwers}
     has acertado
+    PUNTUACION:${numOfCorrectAnwers}
     </p>
     `;
-    
+    numOfCuestion++;
   } else {
     numOfIncorrectAnwers += 1;
-    numOfCorrectAnwers -= 1;
     selectorNumOfCorrectAnwers.innerHTML = `
     <p class = "textAltered">
-    PUNTUACION:${numOfCorrectAnwers}
     has fallado
+    PUNTUACION:${numOfIncorrectAnwers}
     </p>
     `;
-    
+    numOfCuestion++;
   }
-  
-  
+
   if (numOfCorrectAnwers === 10) {
     //se llama a la funcion
-    disableEnableButtons(true)
-    
+    disableEnableButtons(true);
+
     selectorNumOfCorrectAnwers.innerHTML = `
     <p class = "textAltered">
     PUNTUACION:${numOfCorrectAnwers}
     has ganado
     </p>
     `;
+    numOfCuestion++;
+
     return;
   }
   if (numOfIncorrectAnwers === 3) {
     //se llama a la funcion
-    disableEnableButtons(true)
-    
-    
+    disableEnableButtons(true);
+
     selectorNumOfCorrectAnwers.innerHTML = `
-    <p class = "textAltered">PUNTUACION:${numOfCorrectAnwers}
+    <p class = "textAltered">PUNTUACION:${numOfIncorrectAnwers}
     has perdido
     </p> 
     
     <button type="submit" id="loadBtn">Reiniciar</button>
     `;
-    
+
     //se crea evento de boton de reinicio del juego
     const selectorLoad = document.getElementById("loadBtn");
     selectorLoad.addEventListener("click", () => {
       location.reload();
     });
+    numOfCuestion++;
+
     return;
   }
   setTimeout(() => {
     disableEnableButtons(false);
     insertRandomQuestion();
     insertAnswers();
-  
   }, 1000);
 }
 
-//se crea funcion  para se llamada dentro de las condiciones
+//se crea funcion  para ser llamada dentro de las condiciones
 function disableEnableButtons(status) {
   firstAnswerButton.disabled = status;
   secondAnswerButton.disabled = status;
   thirdAnswerButton.disabled = status;
   fourthAnswerButton.disabled = status;
 }
-
 
 insertRandomQuestion();
 insertAnswers();
