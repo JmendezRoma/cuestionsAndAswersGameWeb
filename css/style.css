@@ -1,29 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+.bangers-regular {
+    font-family: "Bangers", system-ui;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+
+
 * {
     padding: 0;
-    width: 0;
+    margin: 0;
     box-sizing: border-box;
 }
 
 #tituloGame {
-    background-color: rgb(236, 196, 255);
-    width: 100rem;
+    color: rgb(255, 214, 10);
+}
+
+/* #tituloGame {
+    background-color: rgba(130, 121, 255, 0.664);
+    width: 100%;
     padding: 10px;
-    font-size: 15px;
-    padding-left: 10rem;
+    font-size: 13px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 17vh;
+    color: rgb(21, 63, 155);
+    
+} */
+
+#descriptionGame {
+    color:rgb(238, 239, 241);
+    padding-bottom: 15px;
+    font-family: "Comic Neue";
 }
 
 
 .textAltered{
-    display: flex;
-    justify-content:center ;
-    flex-direction: column;
-    color: rgb(18, 117, 48);
-    width: 50rem;
-    font-size: 1.5rem;
+    color:rgb(238, 239, 241);
+    width: 100%;
+    font-family: "Comic Neue";
+    font-size: 16px;
+    text-align: center;
+    height: 5vh;
+    padding: 5px;
+    padding-bottom: 40px;
+    font-weight: bold;
+    
 }
-button {
 
-    height: 5rem;
-    width: 30rem;
+
+
+
+#answersList{
+    padding: 25px;
+    display: flex;
+    flex-direction: column-reverse;
+    width: 400px;
+    gap: 10px;
+    height: 38vh;
+    
 }
+
+.answerButton {
+    color: white;
+    background-color: rgb(0, 53, 102);
+    font-family: "Comic Neue";
+
+}
+
+.answerButton:hover {
+    background-color: rgb(255, 214, 10);
+    width: 55%;
+    
+}
+
+
+#numScore {
+    font-size: 25px;
+    color: rgb(255, 214, 10);
+    font-family: "Bangers";
+}
+
+/* header {
+
+} */
+/* #footersec {
+    position: absolute;
+    display: flex;
+    align-items: baseline;
+} */
+
+section {
+    margin-top: 12px;
+}
+
+body {
+    text-align: center;
+    background-color: rgb(0, 8, 20);
+}
+
+h1 {
+    margin-top: 10px;
+    font-size: 33px;
+    padding: 5px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 20px;
+    padding: 5px;
+    margin-top: 20px;
+    font-weight: bold;
+    color: rgb(24, 66, 155);
+    
+}
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+h3 {
+    color:rgb(255, 214, 10);
+    /* background-color:rgb(0, 53, 102); */
+    padding: 10px;
+    width: 180px;
+    border-radius: 15px;
+    border-color: black;
+    align-items: center;
+    font-family: "Bangers", system-ui;
+    font-size: 25px;
+}
+
+#descriptionGame {
+    font-family: "Comic Neue";
+    font-size: 15px;
+    font-weight: bold;
+    
+}
+
+
+footer{
+    height: 15vh;
+    font-weight: bold;
+}
+
+
+
+
+button{
+    color: rgb(255, 255, 255);
+    border-radius: 100px;
+    height: 3rem;
+    width: 50%;
+    background-color: rgb(24, 66, 155);
+    font-weight: bold;
+    margin: auto;
+
+}
+
+
+button:hover{
+    background-color: rgb(255, 214, 10);
+    font-weight: bold;
+}
+
+#loadBtn {
+    font-family: "Comic Neue";
+}
+
+/* escritorio */
+
+@media (min-width: 500px) {
+    #answersList {
+        flex-direction: column;
+        padding: 10px;
+        margin: 2px;
+        width: 800px;
+        height: 400px;
+     
+    }
+
+
+
+   
+};
+
 
