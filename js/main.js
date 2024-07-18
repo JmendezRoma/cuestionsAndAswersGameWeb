@@ -29,7 +29,6 @@ async function filterQuestions() {
   }
 }
 
-
 const cuestionHtmlSelector = document.getElementById("sectionCuestions");
 const selectorNumeroPregunta = document.getElementById("numeroPregunta");
 
@@ -39,10 +38,10 @@ async function insertRandomQuestion() {
 
   if (cuestionsRamdonArray != null) {
     cuestionsRamdonArray.forEach((element) => {
-      let arrayString = JSON.stringify(element.question);
+      let arrayString = JSON.stringify(element.question).replace(/\\/g, " ");
       cuestionHtmlSelector.innerHTML = `
       
-      <p class="textAltered">${arrayString}</p>
+      <p class="textAltered">${arrayString}
       `;
     });
 
@@ -178,7 +177,7 @@ async function checkAnswers(selectedAnswer, correctAnswer) {
     disableEnableButtons(false);
     insertRandomQuestion();
     insertAnswers();
-  }, 1000);
+  }, 500);
 }
 
 //se crea funcion  para ser llamada dentro de las condiciones
@@ -189,6 +188,27 @@ function disableEnableButtons(status) {
   fourthAnswerButton.disabled = status;
 }
 
+//boton mute para silenciar o resproducir la musica
+let selectorBtnMute = document.getElementById("btnMute");
+const audio = new Audio();
+audio.src = "./musica/musicaDeFondo.mp3";
+
+selectorBtnMute.innerHTML = `
+   <p class="texAltered">Music:</p> 
+`;
+selectorBtnMute.addEventListener("click", () => {
+  if (audio.paused) {
+    audio.play();
+    selectorBtnMute.innerHTML = `
+<p class="texAltered">Music:   ▶ </p> 
+`;
+  } else {
+    audio.pause();
+    selectorBtnMute.innerHTML = `
+       <p class="texAltered">Music:   ||</p> 
+    `;
+  }
+});
+
 insertRandomQuestion();
 insertAnswers();
-
