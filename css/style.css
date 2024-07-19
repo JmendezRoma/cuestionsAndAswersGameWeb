@@ -2,6 +2,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 .bangers-regular {
     font-family: "Bangers", system-ui;
     font-weight: 400;
@@ -10,26 +15,14 @@
   
 
 
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-#tituloGame {
-    color: rgb(255, 214, 10);
-}
-
-/* #tituloGame {
-    background-color: rgba(130, 121, 255, 0.664);
+header {
+    background-image: url("../img/trivia25.png");
+    height: 20vh;
     width: 100%;
-    padding: 10px;
-    font-size: 13px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    height: 17vh;
-    color: rgb(21, 63, 155);
-    
-} */
+    background-size: 100% 100%;
+
+}
+
 
 #descriptionGame {
     color:rgb(238, 239, 241);
@@ -42,7 +35,7 @@
     color:rgb(238, 239, 241);
     width: 100%;
     font-family: "Comic Neue";
-    font-size: 16px;
+    font-size: 17px;
     text-align: center;
     height: 5vh;
     padding: 5px;
@@ -51,16 +44,20 @@
     
 }
 
+ #btnMute {
+    width: 120px;
+}
+
 
 
 
 #answersList{
-    padding: 25px;
+    padding-top: 30px;
     display: flex;
     flex-direction: column-reverse;
-    width: 400px;
-    gap: 10px;
-    height: 38vh;
+    width: 380px;
+    gap: 13px;
+
     
 }
 
@@ -68,30 +65,26 @@
     color: white;
     background-color: rgb(0, 53, 102);
     font-family: "Comic Neue";
-
-}
-
-.answerButton:hover {
-    background-color: rgb(255, 214, 10);
-    width: 55%;
+    font-size: 15px;
     
+
 }
+
 
 
 #numScore {
     font-size: 25px;
-    color: rgb(255, 214, 10);
+    color: rgb(184, 181, 16);
     font-family: "Bangers";
 }
 
-/* header {
 
-} */
-/* #footersec {
+
+ #footersec {
     position: absolute;
     display: flex;
     align-items: baseline;
-} */
+} 
 
 section {
     margin-top: 12px;
@@ -99,53 +92,28 @@ section {
 
 body {
     text-align: center;
-    background-color: rgb(0, 8, 20);
+    background-image: url("../img/fondoPrincipal.jpg");
+    background-size:contain no-repeat;
+    width: 100%;
 }
 
-h1 {
-    margin-top: 10px;
-    font-size: 33px;
-    padding: 5px;
-    font-weight: bold;
-}
 
-h2 {
-    font-size: 20px;
-    padding: 5px;
-    margin-top: 20px;
-    font-weight: bold;
-    color: rgb(24, 66, 155);
-    
-}
-main {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
 
-h3 {
-    color:rgb(255, 214, 10);
-    /* background-color:rgb(0, 53, 102); */
-    padding: 10px;
-    width: 180px;
-    border-radius: 15px;
-    border-color: black;
-    align-items: center;
-    font-family: "Bangers", system-ui;
-    font-size: 25px;
-}
+
+
 
 #descriptionGame {
     font-family: "Comic Neue";
-    font-size: 15px;
+    font-size: 17px;
     font-weight: bold;
     
 }
 
 
 footer{
-    height: 15vh;
+    
     font-weight: bold;
+    width: 100%;
 }
 
 
@@ -154,25 +122,28 @@ footer{
 button{
     color: rgb(255, 255, 255);
     border-radius: 100px;
-    height: 3rem;
-    width: 50%;
-    background-color: rgb(24, 66, 155);
+    height: 3.8rem;
+    width: 75%;
+    background-color: rgb(0, 56, 102);
     font-weight: bold;
     margin: auto;
 
 }
 
 
-button:hover{
-    background-color: rgb(255, 214, 10);
-    font-weight: bold;
-}
+
 
 #loadBtn {
     font-family: "Comic Neue";
+    height: 3.8rem;
+    width: 50%
 }
 
-/* escritorio */
+
+#btnMute {
+    margin-top: 8px;
+}
+
 
 @media (min-width: 500px) {
     #answersList {
@@ -181,12 +152,25 @@ button:hover{
         margin: 2px;
         width: 800px;
         height: 400px;
-     
+    }
+
+    button:hover{
+        background-color: rgb(255, 214, 10);
+        font-weight: bold;
+    }
+
+    .answerButton {
+      color: white;
+        
+    }
+
+    .answerButton:hover {
+        background-color: rgb(234, 206, 48);
+        width: 70%;
+        
     }
 
 
-
+    
    
 };
-
-

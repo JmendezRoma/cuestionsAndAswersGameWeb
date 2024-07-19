@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CuestionsAndAswersGameWeb</title>
+    <title>CuestionsAndAswers</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" href="./img/favicon.png">
+    
 </head>
 <body>
-    <header >
-        <IMG src="./img/trivia10.png"></IMG>
-        <!-- <h1 id="tituloGame">QuestionsAndAswers</h1> -->
+    <header id="tituloGame">
 
     </header>
 
-    <main id="mainContainer">
-        <h2 id="descriptionGame">You have to get 10 questions right to win, and you can only get 3 wrong.</h2>
-        <h3>Question</h2>
+    <main>
+
         
         <section id="sectionCuestions"></section>
         </section>
@@ -27,18 +26,15 @@
              </section>
             </section>
     </main>
-    <section id="footersec" >
-        <div id="numeroPregunta"></div>
-        <footer> 
-            <h2 id="numScore">Score:</h2>
-            <section id="score"></section>
-    </section>
+    <div id="numeroPregunta"></div>
+    <footer> 
+        <h2 id="numScore">Score:</h2>
+        <section id="score">
+    
+        </section>
     </footer>
-
-    <audio id="musica-fondo" autoplay loop>
-        <source src="./musica/musicaFondo.mp3" type="audio/mpeg">
-        Tu navegador no soporta la reproducción de audio.
-    </audio>
+    <button id="btnMute"></button>
+    
 
     <script src="./js/main.js" ></script>
 </body>
