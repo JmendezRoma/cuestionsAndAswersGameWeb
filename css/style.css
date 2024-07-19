@@ -13,15 +13,21 @@
     font-style: normal;
   }
   
-
-
 header {
     background-image: url("../img/trivia25.png");
     height: 20vh;
     width: 100%;
     background-size: 100% 100%;
 
+
 }
+
+#descriptionGame {
+    color:rgb(238, 239, 241);
+    padding-bottom: 15px;
+    font-family: "Comic Neue";
+}
+
 
 
 #descriptionGame {
@@ -31,11 +37,16 @@ header {
 }
 
 
+
 .textAltered{
     color:rgb(238, 239, 241);
     width: 100%;
     font-family: "Comic Neue";
+
+    font-size: 20px;
+
     font-size: 17px;
+
     text-align: center;
     height: 5vh;
     padding: 5px;
@@ -52,6 +63,13 @@ header {
 
 
 #answersList{
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column-reverse;
+    width: 400px;
+    gap: 15px;
+
+
     padding-top: 30px;
     display: flex;
     flex-direction: column-reverse;
@@ -66,8 +84,24 @@ header {
     background-color: rgb(0, 53, 102);
     font-family: "Comic Neue";
     font-size: 15px;
+
     
 
+}
+
+
+.answerButton {
+    color: white;
+    background-color: rgb(0, 53, 102);
+    font-family: "Comic Neue";
+    font-size: 15px;
+    
+
+
+.answerButton:hover {
+    background-color: rgb(234, 206, 48);
+    width: 70%;
+    
 }
 
 
@@ -76,6 +110,7 @@ header {
     font-size: 25px;
     color: rgb(184, 181, 16);
     font-family: "Bangers";
+
 }
 
 
@@ -85,6 +120,7 @@ header {
     display: flex;
     align-items: baseline;
 } 
+
 
 
 .correct {
@@ -97,7 +133,6 @@ header {
     color: white;
 }
 
-
 section {
     margin-top: 12px;
 }
@@ -106,6 +141,7 @@ body {
     text-align: center;
     background-image: url("../img/fondoPrincipal.jpg");
     background-size:contain no-repeat;
+
     width: 100%;
 }
 
@@ -144,6 +180,17 @@ button{
 
 
 
+button:hover{
+    background-color: rgb(255, 214, 10);
+    font-weight: bold;
+}
+
+#loadBtn {
+    font-family: "Comic Neue";
+    height: 3.8rem;
+    width: 50%
+}
+
 
 #loadBtn {
     font-family: "Comic Neue";
@@ -164,7 +211,11 @@ button{
         margin: 2px;
         width: 800px;
         height: 400px;
+
+     
     }
+
+  
 
     button:hover{
         background-color: rgb(255, 214, 10);
@@ -182,7 +233,3 @@ button{
         
     }
 
-
-    
-   
-};
