@@ -1,5 +1,3 @@
 
-# gameCuestionsWeb
-=======
 # QuestionAndAnswersGame 🕹🏆
 
