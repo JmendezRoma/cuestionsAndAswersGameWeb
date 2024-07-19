@@ -123,14 +123,6 @@ header {
 
 
 
-
- #footersec {
-    position: absolute;
-    display: flex;
-    align-items: baseline;
-} 
-
-
 .correct {
     background-color: green;
     color: white;
