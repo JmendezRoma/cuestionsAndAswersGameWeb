@@ -95,8 +95,7 @@ header {
     background-color: rgb(0, 53, 102);
     font-family: "Comic Neue";
     font-size: 15px;
-    
-
+}
 
 .answerButton:hover {
     background-color: rgb(234, 206, 48);
@@ -212,7 +211,7 @@ button:hover{
         width: 800px;
         height: 400px;
 
-     
+    }
     }
 
   
