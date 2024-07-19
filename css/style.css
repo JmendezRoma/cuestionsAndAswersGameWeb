@@ -86,6 +86,18 @@ header {
     align-items: baseline;
 } 
 
+
+.correct {
+    background-color: green;
+    color: white;
+}
+
+.incorrect {
+    background-color: red;
+    color: white;
+}
+
+
 section {
     margin-top: 12px;
 }
