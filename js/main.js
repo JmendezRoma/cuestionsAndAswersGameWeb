@@ -115,6 +115,12 @@ let numOfCuestion = 1;
 //guardarmos la etiqueta score
 const selectorNumOfCorrectAnwers = document.getElementById("score");
 
+//cargar audios
+const correctAudio = new Audio('./audio/correct.mp3');
+const incorrectAudio = new Audio('./audio/incorrect.mp3');
+const winAudio = new Audio('./audio/win.mp3')
+const loseAudio = new Audio('./audio/lose.mp3')
+
 //funcion que se encarga de comparar la seleccion del usuario, comprobando si es correcta o incorrecta
 async function checkAnswers(selectedAnswer, correctAnswer) {
   disableEnableButtons(true);
@@ -122,20 +128,22 @@ async function checkAnswers(selectedAnswer, correctAnswer) {
     numOfCorrectAnwers += 1;
     selectorNumOfCorrectAnwers.innerHTML = `
     <p class = "textAltered">
-    Has acertado, PUNTUACION: ${numOfCorrectAnwers}
+    Correct, POINTS: ${numOfCorrectAnwers}
     
     </p>
     `;
     numOfCuestion++;
+    correctAudio.play();  // Reproduce el audio para la respuesta correcta
   } else {
     numOfIncorrectAnwers += 1;
     selectorNumOfCorrectAnwers.innerHTML = `
     <p class = "textAltered">
-    Has fallado, PUNTUACION: ${numOfIncorrectAnwers}
+    You failed, MISTAKES: ${numOfIncorrectAnwers}
     
     </p>
     `;
     numOfCuestion++;
+    incorrectAudio.play();  // Reproduce el audio para la respuesta incorrecta
   }
 
   if (numOfCorrectAnwers === 10) {
@@ -144,11 +152,12 @@ async function checkAnswers(selectedAnswer, correctAnswer) {
 
     selectorNumOfCorrectAnwers.innerHTML = `
     <p class = "textAltered">
-    Has ganado, PUNTUACION: ${numOfCorrectAnwers}
+    WON, POINTS: ${numOfCorrectAnwers}
     
     </p>
     `;
     numOfCuestion++;
+    winAudio.play(); //reproduce el audio de victoria
 
     return;
   }
@@ -157,11 +166,11 @@ async function checkAnswers(selectedAnswer, correctAnswer) {
     disableEnableButtons(true);
 
     selectorNumOfCorrectAnwers.innerHTML = `
-    <p class = "textAltered">Has perdido, PUNTUACION: ${numOfIncorrectAnwers}
+    <p class = "textAltered">GAME OVER, MISTAKES: ${numOfIncorrectAnwers}
     
     </p> 
     
-    <button type="submit" id="loadBtn">Reiniciar</button>
+    <button type="submit" id="loadBtn">Restart</button>
     `;
 
     //se crea evento de boton de reinicio del juego
@@ -170,6 +179,7 @@ async function checkAnswers(selectedAnswer, correctAnswer) {
       location.reload();
     });
     numOfCuestion++;
+    loseAudio.play(); //reproduce el audio de perder
 
     return;
   }

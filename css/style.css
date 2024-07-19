@@ -13,13 +13,12 @@
     font-style: normal;
   }
   
-
-
 header {
     background-image: url("../img/trivia25.png");
     height: 20vh;
     width: 100%;
     background-size: 100% 100%;
+
 
 }
 
@@ -30,11 +29,24 @@ header {
 }
 
 
+
+#descriptionGame {
+    color:rgb(238, 239, 241);
+    padding-bottom: 15px;
+    font-family: "Comic Neue";
+}
+
+
+
 .textAltered{
     color:rgb(238, 239, 241);
     width: 100%;
     font-family: "Comic Neue";
+
     font-size: 20px;
+
+    font-size: 17px;
+
     text-align: center;
     height: 5vh;
     padding: 5px;
@@ -57,6 +69,13 @@ header {
     width: 400px;
     gap: 15px;
 
+
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column-reverse;
+    width: 380px;
+    gap: 13px;
+
     
 }
 
@@ -65,9 +84,19 @@ header {
     background-color: rgb(0, 53, 102);
     font-family: "Comic Neue";
     font-size: 15px;
+
     
 
 }
+
+
+.answerButton {
+    color: white;
+    background-color: rgb(0, 53, 102);
+    font-family: "Comic Neue";
+    font-size: 15px;
+    
+
 
 .answerButton:hover {
     background-color: rgb(234, 206, 48);
@@ -76,10 +105,12 @@ header {
 }
 
 
+
 #numScore {
     font-size: 25px;
     color: rgb(184, 181, 16);
     font-family: "Bangers";
+
 }
 
 
@@ -90,6 +121,26 @@ header {
     align-items: baseline;
 } 
 
+
+
+
+ #footersec {
+    position: absolute;
+    display: flex;
+    align-items: baseline;
+} 
+
+
+.correct {
+    background-color: green;
+    color: white;
+}
+
+.incorrect {
+    background-color: red;
+    color: white;
+}
+
 section {
     margin-top: 12px;
 }
@@ -98,6 +149,8 @@ body {
     text-align: center;
     background-image: url("../img/fondoPrincipal.jpg");
     background-size:contain no-repeat;
+
+    width: 100%;
 }
 
 
@@ -134,6 +187,7 @@ button{
 }
 
 
+
 button:hover{
     background-color: rgb(255, 214, 10);
     font-weight: bold;
@@ -146,6 +200,18 @@ button:hover{
 }
 
 
+#loadBtn {
+    font-family: "Comic Neue";
+    height: 3.8rem;
+    width: 50%
+}
+
+
+#btnMute {
+    margin-top: 8px;
+}
+
+
 @media (min-width: 500px) {
     #answersList {
         flex-direction: column;
@@ -153,7 +219,25 @@ button:hover{
         margin: 2px;
         width: 800px;
         height: 400px;
+
      
     }
-   
-};
+
+  
+
+    button:hover{
+        background-color: rgb(255, 214, 10);
+        font-weight: bold;
+    }
+
+    .answerButton {
+      color: white;
+        
+    }
+
+    .answerButton:hover {
+        background-color: rgb(234, 206, 48);
+        width: 70%;
+        
+    }
+
