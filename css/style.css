@@ -23,6 +23,12 @@ header {
 
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 
 #descriptionGame {
     color:rgb(238, 239, 241);
@@ -40,12 +46,15 @@ header {
     height: 5vh;
     padding: 5px;
     padding-bottom: 40px;
+    padding-top: 15px;
     font-weight: bold;
     
 }
 
  #btnMute {
     width: 120px;
+    border-radius: 18px;
+
 }
 
 
@@ -53,8 +62,6 @@ header {
 
 #answersList{
     padding-top: 30px;
-    display: flex;
-    flex-direction: column-reverse;
     width: 380px;
     gap: 13px;
 
@@ -62,13 +69,22 @@ header {
 }
 
 .answerButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: white;
-    background-color: rgb(0, 53, 102);
+    background-color: rgb(0, 56, 102);
     font-family: "Comic Neue";
     font-size: 15px;
-    
+    cursor: pointer;
+    margin-top: 15px;
+    border-radius: 20px;
+    border-color: rgb(184, 181, 16);
 
 }
+
+
+
 
 
 
@@ -87,12 +103,12 @@ header {
 } 
 
 
-.correct {
+#correct {
     background-color: green;
     color: white;
 }
 
-.incorrect {
+#incorrect {
     background-color: red;
     color: white;
 }
@@ -106,6 +122,7 @@ body {
     text-align: center;
     background-image: url("../img/fondoPrincipal.jpg");
     background-size:contain no-repeat;
+    background-size: cover;
     width: 100%;
 }
 
@@ -148,12 +165,18 @@ button{
 #loadBtn {
     font-family: "Comic Neue";
     height: 3.8rem;
-    width: 50%
+    width: 40%;
+    border-radius: 20px;
+    border-color: rgb(184, 181, 16);
 }
 
 
 #btnMute {
-    margin-top: 8px;
+    margin-top: 16px;
+    border-radius: 20px;
+    border-color: rgb(184, 181, 16);
+    font-family: "Comic Neue";
+    
 }
 
 
@@ -173,16 +196,38 @@ button{
 
     .answerButton {
       color: white;
+      font-size: 20px;
+      margin-top: 30px;
         
     }
 
     .answerButton:hover {
         background-color: rgb(234, 206, 48);
         width: 70%;
+        box-shadow: 0 0 5px rgb(255, 255, 255);
+
         
+    }
+
+    .textAltered {
+        font-size: 23px
+    }
+
+
+    #loadBtn {
+        margin-top: 20px;
+        font-size: 28px;
+        width: 40%;
+    }
+
+    #btnMute {
+        font-size: 23px;
+        margin-top: 20px;
+        width: 30%;
     }
 
 
     
    
 };
+
