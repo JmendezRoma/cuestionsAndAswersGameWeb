@@ -13,66 +13,55 @@
     font-style: normal;
   }
   
+
+
 header {
     background-image: url("../img/trivia25.png");
     height: 20vh;
     width: 100%;
     background-size: 100% 100%;
 
-
 }
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 
 #descriptionGame {
     color:rgb(238, 239, 241);
     padding-bottom: 15px;
     font-family: "Comic Neue";
 }
-
-
-
-#descriptionGame {
-    color:rgb(238, 239, 241);
-    padding-bottom: 15px;
-    font-family: "Comic Neue";
-}
-
 
 
 .textAltered{
     color:rgb(238, 239, 241);
     width: 100%;
     font-family: "Comic Neue";
-
-    font-size: 20px;
-
     font-size: 17px;
-
     text-align: center;
     height: 5vh;
     padding: 5px;
     padding-bottom: 40px;
+    padding-top: 15px;
     font-weight: bold;
     
 }
 
  #btnMute {
     width: 120px;
+    border-radius: 18px;
+
 }
 
 
 
 
 #answersList{
-    padding-top: 60px;
-    display: flex;
-    flex-direction: column-reverse;
-    width: 400px;
-    gap: 15px;
-
-
     padding-top: 30px;
-    display: flex;
-    flex-direction: column-reverse;
     width: 380px;
     gap: 13px;
 
@@ -80,14 +69,20 @@ header {
 }
 
 .answerButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: white;
-    background-color: rgb(0, 53, 102);
+    background-color: rgb(0, 56, 102);
     font-family: "Comic Neue";
     font-size: 15px;
-
-    
+    cursor: pointer;
+    margin-top: 15px;
+    border-radius: 20px;
+    border-color: rgb(184, 181, 16);
 
 }
+
 
 
 .answerButton {
@@ -97,11 +92,6 @@ header {
     font-size: 15px;
 }
 
-.answerButton:hover {
-    background-color: rgb(234, 206, 48);
-    width: 70%;
-    
-}
 
 
 
@@ -109,7 +99,6 @@ header {
     font-size: 25px;
     color: rgb(184, 181, 16);
     font-family: "Bangers";
-
 }
 
 
@@ -121,16 +110,16 @@ header {
 } 
 
 
-
-.correct {
+#correct {
     background-color: green;
     color: white;
 }
 
-.incorrect {
+#incorrect {
     background-color: red;
     color: white;
 }
+
 
 section {
     margin-top: 12px;
@@ -140,7 +129,7 @@ body {
     text-align: center;
     background-image: url("../img/fondoPrincipal.jpg");
     background-size:contain no-repeat;
-
+    background-size: cover;
     width: 100%;
 }
 
@@ -179,27 +168,22 @@ button{
 
 
 
-button:hover{
-    background-color: rgb(255, 214, 10);
-    font-weight: bold;
-}
 
 #loadBtn {
     font-family: "Comic Neue";
     height: 3.8rem;
-    width: 50%
-}
-
-
-#loadBtn {
-    font-family: "Comic Neue";
-    height: 3.8rem;
-    width: 50%
+    width: 40%;
+    border-radius: 20px;
+    border-color: rgb(184, 181, 16);
 }
 
 
 #btnMute {
-    margin-top: 8px;
+    margin-top: 16px;
+    border-radius: 20px;
+    border-color: rgb(184, 181, 16);
+    font-family: "Comic Neue";
+    
 }
 
 
@@ -212,9 +196,8 @@ button:hover{
         height: 400px;
 
     }
-    }
 
-  
+    }
 
     button:hover{
         background-color: rgb(255, 214, 10);
@@ -223,12 +206,37 @@ button:hover{
 
     .answerButton {
       color: white;
+      font-size: 20px;
+      margin-top: 30px;
         
     }
 
     .answerButton:hover {
         background-color: rgb(234, 206, 48);
         width: 70%;
+        box-shadow: 0 0 5px rgb(255, 255, 255);
+
         
     }
 
+    .textAltered {
+        font-size: 23px
+    }
+
+
+    #loadBtn {
+        margin-top: 20px;
+        font-size: 28px;
+        width: 40%;
+    }
+
+    #btnMute {
+        font-size: 23px;
+        margin-top: 20px;
+        width: 30%;
+    }
+
+
+    
+   
+};
