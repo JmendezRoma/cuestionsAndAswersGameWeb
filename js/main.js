@@ -32,13 +32,13 @@ async function filterQuestions() {
 const cuestionHtmlSelector = document.getElementById("sectionCuestions");
 const selectorNumeroPregunta = document.getElementById("numeroPregunta");
 
-//inserta en el DOM el la pregunta random y luego la pasa a string con stringiy
+//inserta en el DOM el la pregunta random 
 async function insertRandomQuestion() {
   await filterQuestions();
 
   if (cuestionsRamdonArray != null) {
     cuestionsRamdonArray.forEach((element) => {
-      let arrayString = JSON.stringify(element.question).replace(/\\/g, " ");
+      let arrayString = (element.question).replace(/\\/g, " ");
       cuestionHtmlSelector.innerHTML = `
       
       <p class="textAltered">${arrayString}
