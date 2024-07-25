@@ -32,13 +32,13 @@ async function filterQuestions() {
 const cuestionHtmlSelector = document.getElementById("sectionCuestions");
 const selectorNumeroPregunta = document.getElementById("numeroPregunta");
 
-//inserta en el DOM el la pregunta random 
+//inserta en el DOM el la pregunta random
 async function insertRandomQuestion() {
   await filterQuestions();
 
   if (cuestionsRamdonArray != null) {
     cuestionsRamdonArray.forEach((element) => {
-      let arrayString = (element.question).replace(/\\/g, " ");
+      let arrayString = element.question.replace(/\\/g, " ");
       cuestionHtmlSelector.innerHTML = `
       
       <p class="textAltered">${arrayString}
@@ -76,19 +76,19 @@ async function insertAnswers() {
 
       firstAnswerButton.innerHTML = `
       
-      ${answerArray[0]}
+      <p>${answerArray[0]}</p>
       `;
       secondAnswerButton.innerHTML = `
       
-      ${answerArray[1]}
+      <p>${answerArray[1]}</p>
       `;
       thirdAnswerButton.innerHTML = `
       
-      ${answerArray[2]}
+      <p>${answerArray[2]}</p>
       `;
       fourthAnswerButton.innerHTML = `
       
-      ${answerArray[3]}
+      <p>${answerArray[3]}</p>
       `;
     });
   }
@@ -116,10 +116,10 @@ let numOfCuestion = 1;
 const selectorNumOfCorrectAnwers = document.getElementById("score");
 
 //cargar audios
-const correctAudio = new Audio('./audio/correct.mp3');
-const incorrectAudio = new Audio('./audio/incorrect.mp3');
-const winAudio = new Audio('./audio/win.mp3')
-const loseAudio = new Audio('./audio/lose.mp3')
+const correctAudio = new Audio("./audio/correct.mp3");
+const incorrectAudio = new Audio("./audio/incorrect.mp3");
+const winAudio = new Audio("./audio/win.mp3");
+const loseAudio = new Audio("./audio/lose.mp3");
 
 //funcion que se encarga de comparar la seleccion del usuario, comprobando si es correcta o incorrecta
 async function checkAnswers(selectedAnswer, correctAnswer) {
@@ -133,7 +133,7 @@ async function checkAnswers(selectedAnswer, correctAnswer) {
     </p>
     `;
     numOfCuestion++;
-    correctAudio.play();  // Reproduce el audio para la respuesta correcta
+    correctAudio.play(); // Reproduce el audio para la respuesta correcta
   } else {
     numOfIncorrectAnwers += 1;
     selectorNumOfCorrectAnwers.innerHTML = `
@@ -143,7 +143,7 @@ async function checkAnswers(selectedAnswer, correctAnswer) {
     </p>
     `;
     numOfCuestion++;
-    incorrectAudio.play();  // Reproduce el audio para la respuesta incorrecta
+    incorrectAudio.play(); // Reproduce el audio para la respuesta incorrecta
   }
 
   if (numOfCorrectAnwers === 10) {
@@ -151,7 +151,7 @@ async function checkAnswers(selectedAnswer, correctAnswer) {
     disableEnableButtons(true);
 
     selectorNumOfCorrectAnwers.innerHTML = `
-    <p class = "textAltered">
+    <p id="questionNum" class = "textAltered">
     WON, POINTS: ${numOfCorrectAnwers}
     
     </p>
@@ -165,13 +165,15 @@ async function checkAnswers(selectedAnswer, correctAnswer) {
     //se llama a la funcion
     disableEnableButtons(true);
 
-    selectorNumOfCorrectAnwers.innerHTML = `
-    <p class = "textAltered">GAME OVER, MISTAKES: ${numOfIncorrectAnwers}
+    console.log(document.querySelector("main"));
+
+    document.querySelector("main").innerHTML = `
+    <div id="idGameOver"><p class = "textAltered">GAME OVER, MISTAKES: ${numOfIncorrectAnwers}
     
     </p> 
     
     <button type="submit" id="loadBtn">Restart</button>
-    `;
+    </div>`;
 
     //se crea evento de boton de reinicio del juego
     const selectorLoad = document.getElementById("loadBtn");
