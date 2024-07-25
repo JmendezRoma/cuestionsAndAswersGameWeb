@@ -13,73 +13,83 @@
     font-style: normal;
   }
   
-
-
 header {
     background-image: url("../img/trivia25.png");
-    height: 20vh;
+    height: 25vh;
     width: 100%;
-    background-size: 100% 100%;
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    grid-area: header;
 
 }
-
 main {
+    display: grid;
+    grid-area: main;
+    grid-template-areas: 
+    "juego"
+    "resultados"
+    "botonLoad"
+    "botonMute"
+    ;
+    width: 100%;
+
+    height: 70vh;
+    grid-template-rows: 70% 15% 1fr 1fr;
+}
+
+footer {
+    font-weight: bold;
+    height: 5vh;
+    width: 100%;
+    grid-area: footer;
+    text-align: center;
+}
+
+footer>p {
+    color: rgba(255, 255, 255, 0.673);
+    font-size: 0.8rem;
+}
+
+#result{
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#idGameOver {
     display: flex;
     flex-direction: column;
-    align-items: center;
-}
-
-
-#descriptionGame {
-    color:rgb(238, 239, 241);
-    padding-bottom: 15px;
-    font-family: "Comic Neue";
+    justify-content: center;
+    padding-top: 10vh;
+    height: 70vh;
+    width: 100%;
 }
 
 
 .textAltered{
     color:rgb(238, 239, 241);
-    width: 100%;
     font-family: "Comic Neue";
-    font-size: 17px;
+    font-size: 3vh;
     text-align: center;
     height: 5vh;
-    padding: 5px;
     padding-bottom: 40px;
-    padding-top: 15px;
     font-weight: bold;
-    
 }
 
  #btnMute {
     width: 120px;
-    border-radius: 18px;
-
 }
 
 
-
+html {
+    width: 100%;
+    height: 100vh;
+}
 
 #answersList{
-    padding-top: 30px;
-    width: 380px;
-    gap: 13px;
-
-    
-}
-
-.answerButton {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    background-color: rgb(0, 56, 102);
-    font-family: "Comic Neue";
-    font-size: 15px;
-    cursor: pointer;
-    margin-top: 15px;
-    border-radius: 20px;
-    border-color: rgb(184, 181, 16);
+    flex-direction: column;
+    grid-area: juego
 
 }
 
@@ -89,71 +99,72 @@ main {
     color: white;
     background-color: rgb(0, 53, 102);
     font-family: "Comic Neue";
-    font-size: 15px;
+    font-size: 4vh;
+
+    
+
 }
 
+
+
+.answerButton:hover {
+    background-color: rgb(234, 206, 48);
+    width: 70%;
+    
+}
 
 
 
 #numScore {
-    font-size: 25px;
-    color: rgb(184, 181, 16);
+    font-size: 3vh;
+    color: rgb(242, 213, 70);
     font-family: "Bangers";
+    text-align: center;
+
 }
 
-
-
- #footersec {
-    position: absolute;
-    display: flex;
-    align-items: baseline;
-} 
-
-
-#correct {
+.correct {
     background-color: green;
     color: white;
 }
 
-#incorrect {
+.incorrect {
     background-color: red;
     color: white;
 }
 
-
-section {
-    margin-top: 12px;
+#sectionCuestions{
+    font-size: 10vh !important;
+    
 }
 
 body {
-    text-align: center;
+    display: grid;
+    grid-template-areas: 
+    "header"
+    "main"
+    "footer";
     background-image: url("../img/fondoPrincipal.jpg");
-    background-size:contain no-repeat;
+    background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     width: 100%;
+    height: 100vh;
 }
 
-
-
-
-
-
-#descriptionGame {
+#loadBtn {
     font-family: "Comic Neue";
-    font-size: 17px;
-    font-weight: bold;
-    
+    height: 8vh;
+    width: 10rem;
+    grid-area: botonLoad;
 }
 
-
-footer{
-    
-    font-weight: bold;
-    width: 100%;
+#btnMute {
+    height: 8vh;
+    width: 10rem;
+    margin-top: 8px;
+    grid-area: botonMute;
 }
-
-
-
 
 button{
     color: rgb(255, 255, 255);
@@ -163,80 +174,39 @@ button{
     background-color: rgb(0, 56, 102);
     font-weight: bold;
     margin: auto;
-
 }
 
 
-
-
-#loadBtn {
-    font-family: "Comic Neue";
-    height: 3.8rem;
-    width: 40%;
-    border-radius: 20px;
-    border-color: rgb(184, 181, 16);
+button:hover{
+    background-color: rgb(255, 214, 10);
+    font-weight: bold;
 }
 
 
-#btnMute {
-    margin-top: 16px;
-    border-radius: 20px;
-    border-color: rgb(184, 181, 16);
-    font-family: "Comic Neue";
-    
-}
+@media(min-width: 600px){
 
-
-@media (min-width: 500px) {
-    #answersList {
-        flex-direction: column;
-        padding: 10px;
-        margin: 2px;
-        width: 800px;
-        height: 400px;
-
+    #questionNum>p{
+        font-size: 1px;
+        border: solid red ;
     }
-
+    #result {
+        flex-direction: row;
+        justify-content: space-around;
     }
-
-    button:hover{
-        background-color: rgb(255, 214, 10);
-        font-weight: bold;
-    }
-
-    .answerButton {
-      color: white;
-      font-size: 20px;
-      margin-top: 30px;
-        
-    }
-
-    .answerButton:hover {
-        background-color: rgb(234, 206, 48);
-        width: 70%;
-        box-shadow: 0 0 5px rgb(255, 255, 255);
-
-        
-    }
-
-    .textAltered {
-        font-size: 23px
-    }
-
-
     #loadBtn {
-        margin-top: 20px;
-        font-size: 28px;
-        width: 40%;
+        font-size: 4rem;
+        height: 15vh;
+        width: 20rem;
+
     }
-
-    #btnMute {
-        font-size: 23px;
-        margin-top: 20px;
-        width: 30%;
-    }
-
-
     
-   
-};
+    #btnMute {
+        height: 8vh;
+        width: 10rem;
+    }
+    button {
+        height: 9vh;
+        width: 60%;
+    }
+
+}
